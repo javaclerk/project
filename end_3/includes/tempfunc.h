@@ -18,7 +18,7 @@ class temperature
 {
     public:
 
-    temperature();
+    temperature(){};
     ifstream in[3];
 
     int z, counter, end;

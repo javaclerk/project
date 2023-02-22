@@ -2,6 +2,7 @@
 
 void input()
 {
+    
     printf(" input : "); // op코더, led 번호, 시작 시간, 끝나는 시간, 패턴(또는 인터벌) 순서로 받음
     scanf("%1c %1c %d %d %1c", &data.opcode1, &data.LedNum1, &timer.StartTime, &timer.EndTime, &data.patter1);
 
