@@ -1,7 +1,7 @@
 #include "../includes/tempfunc.h"
 #include "../includes/header.h"
 
-void temperature::templocation()
+temperature::temperature()
 {
     in[TEMP_TYPE_0].open("/sys/class/thermal/thermal_zone0/temp");
     in[TEMP_TYPE_1].open("/sys/class/thermal/thermal_zone1/temp");
