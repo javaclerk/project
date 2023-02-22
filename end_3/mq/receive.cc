@@ -9,7 +9,7 @@ void receive() //메시지 큐 받음
 
     if(msg.opcode==1)
     {
-        printf(" OP: %x  LN: %x  StartTime: %d  EndTime: %d  pattern: %x \n", msg.opcode, msg.LN, msg.S, msg.E, msg.P);
+        printf(" OP: %x  LED Number: %x  StartTime: %d  EndTime: %d  pattern: %x \n", msg.opcode, msg.LN, msg.S, msg.E, msg.P);
         printf("-----------------------------------------------------\n\n");
     }
     else if(msg.opcode==2)
@@ -19,7 +19,7 @@ void receive() //메시지 큐 받음
     }
     else
     {
-        printf(" OP: %x  ?: %x  StartTime: %d  EndTime: %d  Interval: %x \n", msg.opcode, msg.LN, msg.S, msg.E, msg.P);
+        printf(" OP: %x  GPS Sensor: %x  StartTime: %d  EndTime: %d  Interval: %x \n", msg.opcode, msg.LN, msg.S, msg.E, msg.P);
         printf("-----------------------------------------------------\n\n");
     }
 }

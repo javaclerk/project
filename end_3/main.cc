@@ -13,6 +13,10 @@ void sigint_handler( int signo) // 알람
   {
     temp.Temp_Out();
   }
+  // else if(msg.opcode == 3)
+  // {
+  //   gps.gps_out();
+  // }
   data.z++;
   data.counter+=data.patter;
   alarm(data.patter);

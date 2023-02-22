@@ -16,6 +16,7 @@
 #include "data.h"
 #include "input.h"
 #include "tempfunc.h"
+#include "ledfunc.h"
 
 #define _CRT_SECURE_NO_WARNINGS
 
