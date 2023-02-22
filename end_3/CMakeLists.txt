@@ -9,8 +9,7 @@ message(STATUS " - Path\t: ${CMAKE_CXX_COMPILER}")
 add_executable (program main.cc example.cc)
 add_subdirectory(func)
 add_subdirectory(mq)
-add_subdirectory(temp)
-target_link_libraries (program func mq temp)
+target_link_libraries (program func mq)
 
 find_package (Threads REQUIRED)
 

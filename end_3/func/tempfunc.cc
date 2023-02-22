@@ -9,14 +9,14 @@ void temperature::templocation()
 
 void temperature::Temp_Out()
 {
-    if(data.LedNum1 == 1)
+    if(msg.LN == 1)
     {
-        temperature::Temp_Zone0((TEMP_TYPE)(data.LedNum1 -1));
+        temperature::Temp_Zone0((TEMP_TYPE)(msg.opcode -1));
     }
 
-    else if(data.LedNum1 == 2)
+    else if(msg.LN == 2)
     {
-        temperature::Temp_Zone1((TEMP_TYPE)(data.LedNum1 -1));
+        temperature::Temp_Zone1((TEMP_TYPE)(msg.opcode -1));
     }
 }
 

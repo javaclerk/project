@@ -1,4 +1,4 @@
-#include "includes/header.h"
+#include "header.h"
 
 c_data data;
 stIpcMsg msg;
@@ -9,7 +9,7 @@ temperature temp;
 void sigint_handler( int signo) // 알람
 {
   cout << "Interval : " << data.z << endl;  // 몇 번 받았나 보려고 넣어둠
-  if(data.opcode ==2)
+  if(msg.opcode == 2)
   {
     temp.Temp_Out();
   }
