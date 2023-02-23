@@ -6,8 +6,6 @@ message(STATUS " - ID\t: ${CMAKE_CXX_COMPILER_ID}")
 message(STATUS " - Version\t: ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS " - Path\t: ${CMAKE_CXX_COMPILER}")
 
-
-
 add_executable (receiving_program main.cc example.cc)
 add_subdirectory(func)
 add_subdirectory(mq)
