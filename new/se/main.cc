@@ -4,7 +4,7 @@ c_data data;
 stIpcMsg msg;
 stmq mq;
 sttime timer;
-// temperature temp;
+
 
 
 void * sned_thread(void * param) // 보내는 스레드
@@ -21,15 +21,6 @@ void * sned_thread(void * param) // 보내는 스레드
 
 void sigint_handler( int signo) // 알람
 {
-  //cout << "Interval : " << data.z << endl;  // 몇 번 받았나 보려고 넣어둠
-  // if(msg.opcode == 2)
-  // {
-  //   temp.Temp_Out();
-  // }
-  // // else if(msg.opcode == 3)
-  // {
-  //   gps.gps_out();
-  // }
   data.z++;
   data.counter+=msg.P;
   printf("%d", data.z);
