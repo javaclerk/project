@@ -13,10 +13,14 @@
 #include <cstdio>
 #include <thread>
 #include <signal.h>
-#include "data.h"
+#include <fstream>
+
 #include "input.h"
-#include "tempfunc.h"
+#include "data.h"
 #include "ledfunc.h"
+#include "ledpattern.h"
+#include "tempfunc.h"
+
 
 #define _CRT_SECURE_NO_WARNINGS
 

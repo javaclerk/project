@@ -1,6 +1,7 @@
-#include <iostream>
-#include <fstream>
-#include <string>
+#ifndef _LEDFUNC_H_
+#define _LEDFUNC_H_
+
+#include "header.h"
 
 using namespace std;
 
@@ -27,3 +28,4 @@ void Out();
 
 };
 
+#endif

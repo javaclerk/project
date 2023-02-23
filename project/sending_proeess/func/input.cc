@@ -14,3 +14,4 @@ void input()
 
     sleep(timer.StartTime*1); // 시작 시간만큼 대기
 }
+
