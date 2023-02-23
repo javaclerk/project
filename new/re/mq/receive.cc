@@ -1,4 +1,7 @@
 #include "header.h"
+#include "tempfunc.h"
+
+temperature temp;
 
 void receive() //메시지 큐 받음
 {
@@ -16,6 +19,7 @@ void receive() //메시지 큐 받음
     {
         printf(" OP: %x  Temp Sensor: %x  StartTime: %d  EndTime: %d  Interval: %x \n", msg.opcode, msg.LN, msg.S, msg.E, msg.P);
         printf("-----------------------------------------------------\n\n");
+        temp.Temp_Out();
     }
     else
     {

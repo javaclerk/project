@@ -8,19 +8,17 @@ temperature temp;
 
 void sigint_handler(int signo) // 알람
 {
-  cout << "Interval : " << data.z << endl;  // 몇 번 받았나 보려고 넣어둠
-  if(msg.opcode == 2)
-  {
-    temp.Temp_Out();
-  }
+  
+  cout << "Interval : " << data.z;  // 몇 번 받았나 보려고 넣어둠
+  data.z++;
+  data.counter+=msg.P;
+  printf("%d\n", data.z);
+  alarm(msg.P);
   // // else if(msg.opcode == 3)
   // {
   //   gps.gps_out();
   // }
-  data.z++;
-  data.counter+=msg.P;
-  printf("%d", data.z);
-  alarm(msg.P);
+  
 }
 
 void * receive_thread(void * param) // 받는 스레드
@@ -39,7 +37,7 @@ void * receive_thread(void * param) // 받는 스레드
         signal( SIGALRM, sigint_handler); // 알람 함수 호출
       }
     }
-    //exit(1); // 강제 종료
+    exit(1); // 강제 종료
   }
 }
 
