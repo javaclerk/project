@@ -13,6 +13,7 @@
 #include <cstdio>
 #include <thread>
 #include <signal.h>
+#include <sys/types.h>
 #include "data.h"
 #include "input.h"
 

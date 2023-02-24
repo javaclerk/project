@@ -11,8 +11,8 @@ typedef struct {
   uint32_t      E;
   uint32_t      Idata;
 
-  uint32_t      data_size; //unsigned long 32비트 4바이트
-  uint8_t	    data[IPC_DATA_MAX_SIZE];  //unsigned char 8바이트 1비트
+  // uint32_t      data_size; //unsigned long 32비트 4바이트
+  // uint8_t	    data[IPC_DATA_MAX_SIZE];  //unsigned char 8바이트 1비트
 } stIpcMsg ;
 
 typedef enum OP{  OPCODE_LED = 1, OPCODE_TEMP, OPCODE_GPS } op;

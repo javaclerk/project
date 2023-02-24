@@ -1,11 +1,11 @@
 #include "header.h"
-
+#define SEND_MSGQ_KEY 0x99999902
 bool checkDate(OP op, LN ln, P p);
 
 void send() // 메시지 큐 보내기
 {
   mq.key = ftok("progfile1", 65); // 키 번호
-  mq.msgid = msgget(mq.key, 0666 | IPC_CREAT); // 메시지 큐 id
+  mq.msgid = msgget(SEND_MSGQ_KEY, 0666 | IPC_CREAT); // 메시지 큐 id
 
   bool result = checkDate((OP)data.opcode, (LN)data.LedNum, (P)data.patter); // 데이터 검사
   
@@ -18,7 +18,7 @@ void send() // 메시지 큐 보내기
     msg.S=(uint32_t) timer.StartTime;
     msg.E=(uint32_t) timer.EndTime;
 
-    msgsnd(mq.msgid, &msg, sizeof(msg)-sizeof(long), 0); // 메시지 보내기
+    msgsnd(mq.msgid, &msg, sizeof(msg)-sizeof(long), IPC_NOWAIT); // 메시지 보내기
   }
   else 
   {

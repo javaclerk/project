@@ -14,7 +14,7 @@
 #include <thread>
 #include <signal.h>
 #include <fstream>
-
+#include <sys/types.h>
 #include "input.h"
 #include "data.h"
 #include "ledfunc.h"
