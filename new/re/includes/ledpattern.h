@@ -1,10 +1,7 @@
 #ifndef _LED_PATTERN_H
 #define _LED_PATTERN_H
 
-#include <iostream>
-#include <fstream>
-
-#include "data.h"
+#include "header.h"
 
 // c_data data;
 

@@ -3,6 +3,7 @@
 #include <sys/msg.h>
 #include <string.h>
 #include <stdlib.h>
+#include <iostream>
 #include <memory.h>
 #include <time.h>
 #include <ctime>
@@ -12,6 +13,7 @@
 #include <cstdio>
 #include <thread>
 #include <signal.h>
+#include <fstream>
 
 #include "input.h"
 #include "data.h"

@@ -1,14 +1,19 @@
 #ifndef _LEDFUNC_H_
 #define _LEDFUNC_H_
 
-#include <iostream>
-#include <fstream>
-
-#include "data.h"
+#include "header.h"
 
 using namespace std;
 
 extern int gpio_num,led_num;
+
+enum LED_TYPE{
+    LED_TYPE_GNSS = 0,
+    LED_TYPE_WAVE,
+    LED_TYPE_C_V2X,
+    LED_TYPE_5G,
+    LED_TYPE_RUN
+};
 
 class led{
 public:

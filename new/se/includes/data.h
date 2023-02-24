@@ -9,6 +9,7 @@ typedef struct {
   uint32_t      P;
   uint32_t      S;
   uint32_t      E;
+  uint32_t      Idata;
 
   uint32_t      data_size; //unsigned long 32비트 4바이트
   uint8_t	    data[IPC_DATA_MAX_SIZE];  //unsigned char 8바이트 1비트

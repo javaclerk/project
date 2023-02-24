@@ -1,14 +1,17 @@
 #ifndef _TEMPFUNC_H_
 #define _TEMPFUNC_H_
 
-#include <iostream>
-#include <fstream>
-
-#include "data.h"
+#include "header.h"
 
 using namespace std;
 
 // extern int temp_sensor;
+
+enum TEMP_TYPE
+{
+    TEMP_TYPE_0 = 0,
+    TEMP_TYPE_1
+};
 
 class temperature
 {

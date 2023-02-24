@@ -4,7 +4,7 @@ c_data data;
 stIpcMsg msg;
 stmq mq;
 sttime timer;
-
+// temperature temp;
 
 
 void * sned_thread(void * param) // 보내는 스레드
@@ -19,39 +19,22 @@ void * sned_thread(void * param) // 보내는 스레드
   return NULL;
 }
 
-void sigint_handler( int signo) // 알람
-{
-  data.z++;
-  data.counter+=msg.P;
-  printf("%d", data.z);
-  alarm(msg.P);
-}
+int counter;
 
 void * receive_thread(void * param) // 받는 스레드
 {
-  printf("Return");
   int limit = *(int *) param;
 
-  mq.key = ftok("progfile", 65); // 키 번호
-  mq.msgid = msgget(mq.key, 0660 | IPC_CREAT); // 메시지 큐 id
-  msgrcv(mq.msgid, &msg, sizeof(msg)-sizeof(long), 0, 0); // 메시지 큐 받기
-
-  for (data.i=1; data.i<=limit; data.i++) // 혹시나 데이터 계속 받아올까봐 넣어둠(100회 루프)
-  {
-    printf(" OP: %x  LED Number: %x  StartTime: %d  EndTime: %d  pattern: %x \n", msg.opcode, msg.LN, msg.S, msg.E, msg.P);
-    printf("-----------------------------------------------------\n\n");
-
-    if(msg.opcode==2)
+  // for (data.i=1; data.i<=limit; data.i++) // 혹시나 데이터 계속 받아올까봐 넣어둠(100회 루프)
+  // {
+    while (counter<=msg.E)
     {
-      alarm( msg.P );
-      data.counter+=msg.P;
-      while( data.counter <= msg.E ) // 끝나는 시간보다 카운터가 작으면 계속 동작
-      {
-        signal( SIGALRM, sigint_handler); // 알람 함수 호출
-      }
+      receive();
+      counter+=msg.P;
     }
-    exit(1); // 강제 종료
-  }
+  
+  // }
+  return NULL;
 }
  
 int main()
@@ -69,8 +52,6 @@ int main()
   }
   
   pthread_join(add, NULL); // 보내는 스레드 끝날 때까지 대기
-
-  sleep(3);
 
   int sub_id = pthread_create(&sub, NULL, receive_thread, &param); // 보내는 스레드 끝나면 받는 스레드 생성
   if (sub_id < 0) // 받는 스레드 생성 안 됐을 경우 오류

@@ -4,7 +4,7 @@ bool checkDate(OP op, LN ln, P p);
 
 void send() // 메시지 큐 보내기
 {
-  mq.key = ftok("progfile", 65); // 키 번호
+  mq.key = ftok("progfile1", 65); // 키 번호
   mq.msgid = msgget(mq.key, 0666 | IPC_CREAT); // 메시지 큐 id
 
   bool result = checkDate((OP)data.opcode, (LN)data.LedNum, (P)data.patter); // 데이터 검사

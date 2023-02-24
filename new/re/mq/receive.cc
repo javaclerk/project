@@ -1,11 +1,10 @@
 #include "header.h"
-#include "tempfunc.h"
+// temperature temp;
 
-temperature temp;
 
 void receive() //메시지 큐 받음
 {
-    mq.key = ftok("progfile", 65); // 키 번호
+    mq.key = ftok("progfile1", 65); // 키 번호
     mq.msgid = msgget(mq.key, 0666 | IPC_CREAT); // 메시지 큐 id
     
     msgrcv(mq.msgid, &msg, sizeof(msg)-sizeof(long), 0, 0); // 메시지 큐 받기
@@ -19,7 +18,6 @@ void receive() //메시지 큐 받음
     {
         printf(" OP: %x  Temp Sensor: %x  StartTime: %d  EndTime: %d  Interval: %x \n", msg.opcode, msg.LN, msg.S, msg.E, msg.P);
         printf("-----------------------------------------------------\n\n");
-        temp.Temp_Out();
     }
     else
     {
@@ -27,4 +25,3 @@ void receive() //메시지 큐 받음
         printf("-----------------------------------------------------\n\n");
     }
 }
-
