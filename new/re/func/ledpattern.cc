@@ -1,25 +1,44 @@
-#include "header.h"
+#include "../includes/header.h"
 
 using namespace std;
 
-// c_data data;
-// LED_PATTERN led_pattern;
-// led led;
+c_data data;
+LED_PATTERN led_pattern;
+led led;
 
-// void pattern1()
-// {
-//     int seconde = 30;
-//     while(true)
-//     end = clock();
+void pattern1()
+{
+    switch(LED_TYPE type)
+    {
+        case LED_TYPE_GNSS:
+        led.On();
+        sleep[4];
+        led.Off();
+        sleep[1];
+        led.On();
+        sleep[1];
+        led.Off();
+        sleep[2];
+        led.On();
+        sleep[2];
+        led.Off();
+        sleep[3];
+        led.On();
+        sleep[3];
+        led.Off();
+        sleep[4];
+        led.On();
+        sleep[4];
+        led.Off();
+        sleep[1];
+        led.On();
+        sleep[1];
+        led.Off();
+        sleep[2];
+        led.On();
+        sleep[2];
+        led.Off();
+        break;
+    }
+}
 
-//     if (double(end - start) /  CLOCKS_PER_SEC == seconde) 
-//     {
-//         break;
-//     }
-//     switch(LED_TYPE type)
-//     {
-//         case LED_TYPE_GNSS:
-//         led.Out();
-        
-//     }
-// }
