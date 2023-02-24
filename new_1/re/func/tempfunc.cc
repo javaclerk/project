@@ -25,7 +25,6 @@ void temperature::Temp_Zone0(TEMP_TYPE type)
     ifstream in("/sys/class/thermal/thermal_zone0/temp");
     in >> value;
     std::cout << "temp_zone0 temperature is :: " << value << "℃" << std::endl;
-    msgctl(mq.msgid, IPC_RMID, NULL); 
 }
 
 void temperature::Temp_Zone1(TEMP_TYPE type)
