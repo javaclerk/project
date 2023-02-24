@@ -1,5 +1,5 @@
 #include "header.h"
-#include "tempfunc.h"
+
 c_data data;
 stIpcMsg msg;
 stmq mq;
@@ -7,6 +7,7 @@ stmq2 mq2;
 sttime timer;
 temperature temp;
 stIpcMsg2 msg2;
+
 #define RECV_MSGQ_KEY 0x99999901
 #define SEND_MSGQ_KEY 0x99999902
 

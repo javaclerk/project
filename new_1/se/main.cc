@@ -25,10 +25,10 @@ void * sned_thread(void * param) // 보내는 스레드
   input(); // 실제 입력
   send(); // 메시지 큐 보내기
 
-  // while(1)
-  // {
-    // if(counter>msg.E) // 데이터가 true면
-    // {
+  while(1)
+  {
+    if(counter>msg.E) // 데이터가 true면
+    {
       while(1)
       {
         memset(&data, 0, sizeof(c_data)); // 멤버 초기화
@@ -61,15 +61,23 @@ void * receive_thread(void * param) // 받는 스레드
   {
       // if(data.opcode==2 || data.opcode==3)
       // {
-        // while (counter<=msg.E)
-        // {
+        while (counter<=msg.E)
+        {
           msgrcv(mq2.msgid, &msg2, sizeof(msg2)-sizeof(long), 0, 0); // 메시지 큐 받기
           printf("TEMP : %d \n", msg2.Idata);
-          // counter+=msg.P;
+          counter+=msg.P;
           // bool isreceive=false;
           // bool 만들고 isreceive==true? > send 다시 시작
           // enter 누르면 시작하게?
-        // }
+        }
+        memset(&data, 0, sizeof(c_data)); // 멤버 초기화
+        memset(&msg, 0, sizeof(stIpcMsg)); // 멤버 초기화
+        printf("yes1\n");
+        exmaple(); // 입력 예시
+        printf("exmaple %d\n", data.opcode);
+        input(); // 실제 입력
+        printf("input %d\n", data.opcode);
+        send(); // 메시지 큐 보내기
         // printf("true \n");
         // return (void*)true;
       // }
