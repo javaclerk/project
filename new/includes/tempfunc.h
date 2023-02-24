@@ -20,7 +20,6 @@ class temperature
     temperature(){};
     ifstream in[3];
 
-    int z, counter, end;
     float value = value / 1000;
     
     void sigint_handler(int signo);

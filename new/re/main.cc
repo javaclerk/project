@@ -1,5 +1,6 @@
 #include "header.h"
 #include "tempfunc.h"
+
 c_data data;
 stIpcMsg msg;
 stmq mq;
@@ -9,7 +10,9 @@ temperature temp;
 
 #define RECV_MSGQ_KEY 0x99999901
 #define SEND_MSGQ_KEY 0x99999902
+
 int counter=1;
+
 void * receive_thread(void * param) // 받는 스레드
 {
   int limit = *(int *) param;
@@ -19,29 +22,23 @@ void * receive_thread(void * param) // 받는 스레드
 
   mq2.key = ftok("2", 66); // 키 번호
   mq2.msgid = msgget(RECV_MSGQ_KEY, 0666 | IPC_CREAT); // 메시지 큐 id
-
-  // msgrcv(mq.msgid, &msg, sizeof(msg)-sizeof(long), 0, 0); // 메시지 큐 받기
   
-  // while (1)
+  while(counter<=msg.E)
   {
     msgrcv(mq.msgid, &msg, sizeof(msg)-sizeof(long), 0, 0); // 메시지 큐 받기
-
     printf(" OP: %x  LED Number: %x  StartTime: %d  EndTime: %d  pattern: %x \n", msg.opcode, msg.LN, msg.S, msg.E, msg.P);
+    receive();
+    // while(counter<=msg.E)
+    // { 
+    //   msg.mtype = 1; // 메시지 타입(크기)
+    //   msg.S= msg.S+1;
+    //   msg.Idata= (uint32_t)temp.value;
+    //   printf("msg.Idata : %d \n", msg.Idata);
 
-    while(counter<=msg.E)
-    {
-      temp.Temp_Out();
-      
-      msg.mtype = 1; // 메시지 타입(크기)
-      msg.S= msg.S+1;
-      msg.Idata= (uint32_t)temp.value;
-      printf("msg.Idata : %d \n", msg.Idata);
-
-      msgsnd(mq2.msgid, &msg, sizeof(msg)-sizeof(long), 0); // 메시지 보내기
-
-      counter+=msg.P;
-      sleep(msg.E);
-    }
+    //   msgsnd(mq2.msgid, &msg, sizeof(msg)-sizeof(long), 0); // 메시지 보내기
+    //   counter+=msg.P;
+    //   sleep(msg.E);
+    // }
   }
   return NULL;
 }
