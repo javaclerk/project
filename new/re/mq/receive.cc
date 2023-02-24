@@ -1,6 +1,8 @@
 #include "header.h"
 #include "tempfunc.h"
 
+temperature temp;
+
 void receive() //메시지 큐 받음
 {
     mq.key = ftok("progfile1", 65); // 키 번호
@@ -15,7 +17,6 @@ void receive() //메시지 큐 받음
     }
     else if(msg.opcode==OPCODE_TEMP)
     {
-        temperature temp;
 
         cout << " OP: " << msg.opcode << "Temp Sensor: " << msg.LN << "StartTime: " << msg.S << "EndTime: " << msg.E << "Interval: " << msg.P << endl;
         cout << "-----------------------------------------------------\n\n" << endl;

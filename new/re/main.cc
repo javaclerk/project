@@ -6,7 +6,7 @@ stIpcMsg msg;
 stmq mq;
 stmq mq2;
 sttime timer;
-temperature temp;
+
 
 #define RECV_MSGQ_KEY 0x99999901
 #define SEND_MSGQ_KEY 0x99999902
