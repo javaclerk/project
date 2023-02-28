@@ -11,12 +11,12 @@ led::led(){
 }
 
 void led::Out(){
-    if(led_num == 1){
-        led::On((LED_TYPE)(gpio_num -1));
+    if(msg.P == 1){
+        led::On((LED_TYPE)(msg.LN -1));
     }
 
-    else if(led_num == 0){
-        led::Off((LED_TYPE)(gpio_num -1));
+    else if(msg.P == 0){
+        led::Off((LED_TYPE)(msg.LN -1));
     }
     
 }

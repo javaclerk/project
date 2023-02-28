@@ -1,5 +1,5 @@
-#include "header.h"
-#include "tempfunc.h"
+#include "../includes/header.h"
+
 c_data data;
 stIpcMsg msg;
 stmq mq;
