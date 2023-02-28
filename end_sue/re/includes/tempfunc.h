@@ -1,7 +1,8 @@
 #ifndef _TEMPFUNC_H_
 #define _TEMPFUNC_H_
 
-#include "header.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
