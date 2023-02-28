@@ -1,4 +1,4 @@
-#include "../includes/header.h"
+#include "header.h"
 
 void exmaple() // 입력 예시
 {

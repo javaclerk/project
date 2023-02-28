@@ -1,4 +1,4 @@
-#include "../includes/header.h"
+#include "header.h"
 
 #define RECV_MSGQ_KEY 0x99999901
 #define SEND_MSGQ_KEY 0x99999902
@@ -15,7 +15,6 @@ bool isreceive=false;
 
 void * sned_thread(void * param) // 보내는 스레드
 {
-  msgctl(mq.msgid, IPC_RMID, NULL);
   printf("sned_thread \n");
   int limit = *(int *) param;
 
@@ -37,29 +36,15 @@ void * receive_thread(void * param) // 받는 스레드
   
   while (1)
   {
-      if(data.opcode==2)
+      if(data.opcode==2 || data.opcode==3)
       {
         counter=1;
         while (counter<=msg.E)
         {
           msgrcv(mq2.msgid, &msg2, sizeof(msg2)-sizeof(long), 0, 0); // 메시지 큐 받기
-          if(msg.LN ==1)
-          {
-            printf(" temp_zone0 temperature is :: %d ℃\n", msg2.Idata);
-            counter+=msg.P;
-          }
-          else if(msg.LN ==2)
-          {
-            printf(" temp_zone1 temperature is :: %d ℃\n", msg2.Idata);
-            counter+=msg.P;
-          }
-          
+          printf(" TEMP : %d \n", msg2.Idata);
+          counter+=msg.P;
         }
-      }
-      
-      else if(data.opcode ==3)
-      {
-
       }
 
       counter=0;
@@ -68,7 +53,6 @@ void * receive_thread(void * param) // 받는 스레드
       if(isreceive==true)
       {
         printf(" 잠시만 기다려주세요. \n");
-        msgctl(mq2.msgid, IPC_RMID, NULL);
         sleep(msg.E);
         memset(&data, 0, sizeof(c_data)); // 멤버 초기화
         memset(&msg, 0, sizeof(stIpcMsg)); // 멤버 초기화

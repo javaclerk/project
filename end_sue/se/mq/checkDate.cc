@@ -1,4 +1,4 @@
-#include "../includes/header.h"
+#include "header.h"
 
 bool checkDate(enum OP op, enum LN ln, enum P p)
 {

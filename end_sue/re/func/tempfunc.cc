@@ -1,3 +1,4 @@
+#include "../includes/tempfunc.h"
 #include "../includes/header.h"
 
 // temperature::temperature()
