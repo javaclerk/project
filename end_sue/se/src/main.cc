@@ -45,15 +45,15 @@ void * receive_thread(void * param) // 받는 스레드
           msgrcv(mq2.msgid, &msg2, sizeof(msg2)-sizeof(long), 0, 0); // 메시지 큐 받기
           if(msg.LN ==1)
           {
-            printf(" temp_zone0 temperature is :: %d ℃\n", msg2.Idata / 1000);
+            printf(" temp_zone0 temperature is :: %d ℃\n", msg2.Idata);
             counter+=msg.P;
           }
           else if(msg.LN ==2)
           {
-            printf(" temp_zone1 temperature is :: %d ℃\n", msg2.Idata / 1000);
+            printf(" temp_zone1 temperature is :: %d ℃\n", msg2.Idata);
             counter+=msg.P;
           }
-          msgctl(mq.msgid, IPC_RMID, NULL);
+          
         }
       }
       
@@ -68,7 +68,7 @@ void * receive_thread(void * param) // 받는 스레드
       if(isreceive==true)
       {
         printf(" 잠시만 기다려주세요. \n");
-        msgctl(mq.msgid, IPC_RMID, NULL);
+        msgctl(mq2.msgid, IPC_RMID, NULL);
         sleep(msg.E);
         memset(&data, 0, sizeof(c_data)); // 멤버 초기화
         memset(&msg, 0, sizeof(stIpcMsg)); // 멤버 초기화

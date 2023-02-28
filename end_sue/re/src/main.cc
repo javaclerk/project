@@ -27,7 +27,11 @@ void * receive_thread(void * param) // 받는 스레드
     counter=1;
 
   }
+
+  msgctl(mq.msgid, IPC_RMID, NULL);
+
   return NULL;
+
 }
 
 int main()
