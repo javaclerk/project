@@ -35,7 +35,7 @@ void receive() //메시지 큐 받음
         sleep(msg.E);
         }
     }
-    else
+    else if(msg.opcode == 3)
     {
         printf(" OP: %x  GPS Sensor: %x  StartTime: %d  EndTime: %d  Interval: %x \n", msg.opcode, msg.LN, msg.S, msg.E, msg.P);
         printf("-----------------------------------------------------\n\n");

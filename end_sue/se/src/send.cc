@@ -23,5 +23,6 @@ void send() // 메시지 큐 보내기
     printf(" error \n");
     exit(1);
   }
+  
 }
 
