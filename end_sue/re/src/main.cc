@@ -7,6 +7,7 @@ stmq2 mq2;
 sttime timer;
 temperature temp;
 stIpcMsg2 msg2;
+
 #define RECV_MSGQ_KEY 0x99999901
 #define SEND_MSGQ_KEY 0x99999902
 
@@ -24,26 +25,7 @@ void * receive_thread(void * param) // 받는 스레드
   {
     msgrcv(mq.msgid, &msg, sizeof(msg)-sizeof(long), 0, 0); // 메시지 큐 받기
 
-    if(msg.opcode==2 || msg.opcode==3)
-    {
-      while(counter<=msg.E)
-      {
-        temp.Temp_Out();
-        
-        msg2.mtype = 1; // 메시지 타입(크기)
-        msg2.Idata= (uint32_t)temp.value;
-
-        printf("msg.Idata : %d \n", msg2.Idata);
-        
-        msgsnd(mq2.msgid2, &msg2, sizeof(msg2)-sizeof(long), IPC_CREAT); // 메시지 보내기
-        counter+=msg.P;
-        sleep(msg.E);
-      }
-      printf("------------------------------------------\n");
-      memset(&data, 0, sizeof(c_data)); // 멤버 초기화
-      memset(&msg, 0, sizeof(stIpcMsg)); // 멤버 초기화
-      counter=1;
-    }
+    receive();
   }
   return NULL;
 }
@@ -63,3 +45,4 @@ int main()
   
   return 0;
 }
+

@@ -17,9 +17,11 @@ void send() // 메시지 큐 보내기
 
     msgsnd(mq.msgid, &msg, sizeof(msg)-sizeof(long), IPC_NOWAIT); // 메시지 보내기
   }
+  
   else 
   {
     printf(" error \n");
     exit(1);
   }
 }
+

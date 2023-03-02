@@ -36,13 +36,24 @@ void * receive_thread(void * param) // 받는 스레드
   
   while (1)
   {
-      if(data.opcode==2 || data.opcode==3)
+      if(data.opcode==2)
       {
         counter=1;
         while (counter<=msg.E)
         {
           msgrcv(mq2.msgid, &msg2, sizeof(msg2)-sizeof(long), 0, 0); // 메시지 큐 받기
           printf(" TEMP : %d \n", msg2.Idata);
+          counter+=msg.P;
+          
+        }
+      }
+      else if(data.opcode==3)
+      {
+        counter =1;
+        while(counter<=msg.E)
+        {
+          msgrcv(mq2.msgid, &msg2, sizeof(msg2)-sizeof(long), 0, 0);
+          cout << "GPS :: " << msg2.Idata << endl;
           counter+=msg.P;
         }
       }
