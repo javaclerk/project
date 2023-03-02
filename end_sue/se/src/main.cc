@@ -42,19 +42,20 @@ void * receive_thread(void * param) // 받는 스레드
         while (counter<=msg.E)
         {
           msgrcv(mq2.msgid, &msg2, sizeof(msg2)-sizeof(long), 0, 0); // 메시지 큐 받기
-          printf(" TEMP : %d \n", msg2.Idata);
+          cout << "TEMP :: " << msg2.Idata << "°C" << endl;
           counter+=msg.P;
-          
+
         }
       }
       else if(data.opcode==3)
       {
         counter =1;
-        while(counter<=msg.E)
+        while(counter<=msg.E)   
         {
           msgrcv(mq2.msgid, &msg2, sizeof(msg2)-sizeof(long), 0, 0);
           cout << "GPS :: " << msg2.Idata << endl;
           counter+=msg.P;
+
         }
       }
 
