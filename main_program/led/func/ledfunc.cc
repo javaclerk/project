@@ -11,24 +11,18 @@ led::led(){
 }
 
 void led::Out(){
-    cout << "1.GNSS LED    2.WAVE LED    3.C-V2X LED    4.5G LED    5.RUN LED    6.EXIT" << endl;
-    cin >> gpio_num;
-
-    if(gpio_num < 6)
+    while(gpio_num < 6)
     {
-        while(gpio_num == 6){
         cout << "Select Your LED Status Insert ( 0 is off, 1 is on)" << endl;
         cin >> led_num;
+
         if(led_num == 1)
         {
             led::On((LED_TYPE)(gpio_num -1));
-            break;
         }
         else if(led_num == 0)
         {
             led::Off((LED_TYPE)(gpio_num -1));
-            break;
-        }
         }
         
     }
@@ -36,7 +30,6 @@ void led::Out(){
     {
         cout << "End of Prgram !!! " << endl;
     }
-    
 }
 
 void led::On(LED_TYPE type){
@@ -50,7 +43,6 @@ void led::Off(LED_TYPE type){
 
     int value = 0;
     ledout[type] << value;
-
 }
 
 
