@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/chj/workspace/project/main_program/led/func/ledfunc.cc
+../includes/header.h
+/home/chj/workspace/project/main_program/led/includes/header.h
+
+/home/chj/workspace/project/main_program/led/includes/header.h
+stdio.h
+-
+time.h
+-
+iostream
+-
+fstream
+-
+string
+-
+ledfunc.h
+/home/chj/workspace/project/main_program/led/includes/ledfunc.h
+ledpattern.h
+/home/chj/workspace/project/main_program/led/includes/ledpattern.h
+
+/home/chj/workspace/project/main_program/led/includes/ledfunc.h
+iostream
+-
+fstream
+-
+string
+-
+
+/home/chj/workspace/project/main_program/led/includes/ledpattern.h
+iostream
+-
+fstream
+-
+ledfunc.h
+/home/chj/workspace/project/main_program/led/includes/ledfunc.h
+

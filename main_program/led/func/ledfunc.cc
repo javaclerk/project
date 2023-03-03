@@ -1,4 +1,4 @@
-#include "../includes/ledfunc.h"
+#include "../includes/header.h"
 
 led::led(){
     // led_init();
@@ -10,7 +10,20 @@ led::led(){
 
 }
 
+void led::led_finish(){
+    if(gpio_num == 6)
+    {
+
+        cout << "End of Program !!! " << endl;
+        cout << "Return to the main" << endl;
+        return led.Out();
+    }
+}
+
 void led::Out(){
+    cout << "Please Choose What Led You Want to Control" << endl;
+    cout << "1.GNSS LED    2.WAVE LED    3.C-V2X LED    4.5G LED    5.RUN LED    6.EXIT" << endl;
+    cin >> gpio_num;
     while(gpio_num < 6)
     {
         cout << "Select Your LED Status Insert ( 0 is off, 1 is on)" << endl;
@@ -26,10 +39,7 @@ void led::Out(){
         }
         
     }
-    else if(gpio_num == 6)
-    {
-        cout << "End of Prgram !!! " << endl;
-    }
+    
 }
 
 void led::On(LED_TYPE type){
@@ -40,12 +50,10 @@ void led::On(LED_TYPE type){
 
 
 void led::Off(LED_TYPE type){
-
+    
     int value = 0;
     ledout[type] << value;
 }
-
-
 
 
 // int led::led_init()

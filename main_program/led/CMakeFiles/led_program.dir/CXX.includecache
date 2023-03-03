@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/chj/workspace/project/main_program/led/includes/ledfunc.h
+iostream
+-
+fstream
+-
+string
+-
+
+/home/chj/workspace/project/main_program/led/main.cc
+includes/ledfunc.h
+/home/chj/workspace/project/main_program/led/includes/ledfunc.h
+
